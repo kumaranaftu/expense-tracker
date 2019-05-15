@@ -1,0 +1,31 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "Web to tracker your daily expenses",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=src/spec/config/jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumaranaftu/expense-tracker.git"
+  },
+  "author": "Kumaran Dhanasekaran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kumaranaftu/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/kumaranaftu/expense-tracker#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.8",
+    "tracer": "^0.9.8"
+  },
+  "devDependencies": {
+    "jasmine": "^3.4.0",
+    "sinon": "^7.3.2",
+    "sinon-express-mock": "^2.2.0"
+  }
+}
