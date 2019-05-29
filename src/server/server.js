@@ -2,7 +2,7 @@ const express = require("express");
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
-const logger = require("./src/config/logger")().getLogger();
+const logger = require("./config/logger")().getLogger();
 const SERVER_PORT = 8080;
 
 let initialzeServer = (app) => {
@@ -40,20 +40,20 @@ let initializeApp = async () => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.resolve(__dirname, '../../dist')));
 
-    let Expense = require("./src/models/expenseModel");
-    let Category = require("./src/models/categoryModel");
+    let Expense = require("./models/expenseModel");
+    let Category = require("./models/categoryModel");
 
-    let expenseRouter = require("./src/routes/expenseRoutes")(Expense);
-    let categoryRouter = require("./src/routes/categoryRoutes")(Category);
+    let expenseRouter = require("./routes/expenseRoutes")(Expense);
+    let categoryRouter = require("./routes/categoryRoutes")(Category);
 
     app.use("/api/v1/Expenses", expenseRouter);
     app.use("/api/v1/Categories", categoryRouter);
 
-    app.get("/", (request, response) => {
-      return response.render("index", {})
-    });
+    // app.get("/", (request, response) => {
+    //   return response.send("index")
+    // });
 
     await initialzeServer(app);
 
